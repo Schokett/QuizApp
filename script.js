@@ -42,10 +42,8 @@ const questions = [
 ];
 let questionsIndex = 0;
 
-function newQuestion() {
-  if (questionsIndex < questions.length) {
-    //body
-    const startBody = `
+function startDisplay() {
+  const startBody = `
   <h2 id="question-header"></h2>
       <div class="answer-container">
         <button id="btn-one"></button>
@@ -53,9 +51,20 @@ function newQuestion() {
         <button id="btn-three"></button>
         <button id="btn-four"></button>
       </div>`;
-    const quizBody = document.getElementById("quiz-frame");
-    quizBody.innerHTML = startBody;
+  const quizBody = document.getElementById("quiz-frame");
+  quizBody.innerHTML = startBody;
+}
+function endDisplay() {
+  const startBody = `
+  <h2 id="question-header">Du hast alle Fragen durch!</h2>
+  `;
+  const quizBody = document.getElementById("quiz-frame");
+  quizBody.innerHTML = startBody;
+}
 
+function newQuestion() {
+  if (questionsIndex < questions.length) {
+    startDisplay();
     //header title
     const header = document.getElementById("question-header");
     const currentQuestion = questions[questionsIndex];
@@ -77,11 +86,7 @@ function newQuestion() {
 
     questionsIndex++;
   } else {
-    const startBody = `
-  <h2 id="question-header">Du hast alle Fragen durch!</h2>
-  `;
-    const quizBody = document.getElementById("quiz-frame");
-    quizBody.innerHTML = startBody;
+    endDisplay();
   }
   console.log(questionsIndex);
 }
