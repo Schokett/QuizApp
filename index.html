@@ -6,14 +6,17 @@
     <title>QuizApp</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h2 id="question-header">Hier steht eine Frage</h2>
-    <div class="answer-container">
-      <button>Inhalt</button>
-      <button>Inhalt</button>
-      <button>Inhalt</button>
-      <button>Inhalt</button>
+    <div class="quiz-frame">
+      <h2 id="question-header">Hier steht eine Frage</h2>
+      <div class="answer-container">
+        <button>Inhalt</button>
+        <button>Inhalts</button>
+        <button>Inhalt</button>
+        <button>Inhalt</button>
+      </div>
     </div>
     <div class="action-container">
       <button>Lösung</button>
@@ -21,35 +24,3 @@
     </div>
   </body>
 </html>
-<style>
-  h2 {
-    font-size: 5rem;
-    font-weight: 500;
-    text-align: center;
-  }
-  .answer-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 3rem;
-    justify-content: center;
-  }
-  button {
-    font-size: 1.5rem;
-    width: 45%;
-    height: 8rem;
-    border-radius: 18px;
-    border: transparent;
-    background-color: rgb(222, 228, 231);
-  }
-  .action-container {
-    display: flex;
-    margin-top: 4rem;
-    gap: 1rem;
-
-    button {
-      width: 6%;
-      height: 5rem;
-    }
-  }
-</style>
