@@ -35,7 +35,7 @@ button:hover {
     height: 6rem;
   }
 }
-.quiz-frame {
+#quiz-frame {
   box-shadow: 0px 0px 12px rgba(238, 238, 238, 0.603);
   padding: 2rem;
   border-radius: 18px;
