@@ -93,18 +93,17 @@ function newQuestion() {
     btnTwo.innerText = optionsTwo.text;
     btnThree.innerText = optionsThree.text;
     btnFour.innerText = optionsFour.text;
-
-    questionsIndex++;
   } else {
     endDisplay();
     questionsIndex = 0;
   }
 }
 function checkAnswer(answerId) {
-  const currentQuestion = questions[questionsIndex - 1];
+  const currentQuestion = questions[questionsIndex];
   const selectedOption = currentQuestion.options[answerId];
   const buttonIds = ["btn-one", "btn-two", "btn-three", "btn-four"];
   const clickedButton = document.getElementById(buttonIds[answerId]);
+  console.log(questionsIndex);
 
   if (selectedOption.correct === true) {
     clickedButton.classList.add("true");
@@ -117,4 +116,11 @@ function checkAnswer(answerId) {
     const correktButtonId = buttonIds[correktIndex];
     document.getElementById(correktButtonId).classList.add("true");
   }
+  randomQuestion();
+}
+
+function randomQuestion() {
+  // questionsIndex++;
+  const step = Math.floor(Math.random() * 3) + 1;
+  questionsIndex += step;
 }
