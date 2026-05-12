@@ -111,6 +111,6 @@ function checkAnswer(answerId) {
     alert(selectedOption.text + " war richtig!");
   } else {
     clickedButton.classList.add("false");
-    alert(selectedOption.text + " war flasch!");
+    alert(selectedOption.text + " war falsch!");
   }
 }
