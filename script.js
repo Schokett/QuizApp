@@ -112,5 +112,9 @@ function checkAnswer(answerId) {
   } else {
     clickedButton.classList.add("false");
     alert(selectedOption.text + " war falsch!");
+    // das suchen der richtigen antwort und makieren mit einer klasse
+    const correktIndex = currentQuestion.options.findIndex((opt) => opt.correct === true);
+    const correktButtonId = buttonIds[correktIndex];
+    document.getElementById(correktButtonId).classList.add("true");
   }
 }
