@@ -64,39 +64,41 @@ function startDisplay() {
   const quizBody = document.getElementById("quiz-frame");
   quizBody.innerHTML = startBody;
 }
-function endDisplay() {
-  const startBody = `
-  <h2 id="question-header">Du hast alle Fragen durch!<br>Klicke auf weiter zum neustarten.</h2>
-  `;
-  const quizBody = document.getElementById("quiz-frame");
-  quizBody.innerHTML = startBody;
-}
 
 function newQuestion() {
-  if (questionsIndex < questions.length) {
-    startDisplay();
-    //header title
-    const header = document.getElementById("question-header");
-    const currentQuestion = questions[questionsIndex];
-    header.innerText = currentQuestion.question;
-    //Quiz options
-    const optionsOne = questions[questionsIndex].options[0];
-    const optionsTwo = questions[questionsIndex].options[1];
-    const optionsThree = questions[questionsIndex].options[2];
-    const optionsFour = questions[questionsIndex].options[3];
-
-    const btnOne = document.getElementById("btn-one");
-    const btnTwo = document.getElementById("btn-two");
-    const btnThree = document.getElementById("btn-three");
-    const btnFour = document.getElementById("btn-four");
-    btnOne.innerText = optionsOne.text;
-    btnTwo.innerText = optionsTwo.text;
-    btnThree.innerText = optionsThree.text;
-    btnFour.innerText = optionsFour.text;
-  } else {
-    endDisplay();
+  if (questionsIndex >= questions.length) {
+    alert("neustart");
     questionsIndex = 0;
+    randomizerQuestion();
   }
+  startDisplay();
+  //header title
+  const header = document.getElementById("question-header");
+  const currentQuestion = questions[questionsIndex];
+  header.innerText = currentQuestion.question;
+
+  for (let i = 0; i < 4; i++) {
+    const option = questions[questionsIndex].options[i];
+    btn = document.getElementById(`btn-${i}`);
+    btn.innerText = option.text;
+  }
+
+  //Quiz options
+  const optionsOne = questions[questionsIndex].options[0];
+  const optionsTwo = questions[questionsIndex].options[1];
+  const optionsThree = questions[questionsIndex].options[2];
+  const optionsFour = questions[questionsIndex].options[3];
+
+  const btnOne = document.getElementById("btn-one");
+  const btnTwo = document.getElementById("btn-two");
+  const btnThree = document.getElementById("btn-three");
+  const btnFour = document.getElementById("btn-four");
+  btnOne.innerText = optionsOne.text;
+  btnTwo.innerText = optionsTwo.text;
+  btnThree.innerText = optionsThree.text;
+  btnFour.innerText = optionsFour.text;
+
+  console.log(questionsIndex);
 }
 function checkAnswer(answerId) {
   const currentQuestion = questions[questionsIndex];
@@ -118,9 +120,17 @@ function checkAnswer(answerId) {
   }
   randomQuestion();
 }
-
+randomizerQuestion();
 function randomQuestion() {
-  // questionsIndex++;
-  const step = Math.floor(Math.random() * 3) + 1;
-  questionsIndex += step;
+  questionsIndex++;
+  // const step = Math.floor(Math.random() * questions.length);
+  // questionsIndex = step;
+}
+function randomizerQuestion() {
+  for (let i = questions.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    let k = questions[i];
+    questions[i] = questions[j];
+    questions[j] = k;
+  }
 }
